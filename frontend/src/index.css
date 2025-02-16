@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
+.nav-item {
+    display: inline-block;
+    position: relative;
+    justify-content: space-between;
+    margin-right:20px;
+    color: black;
+  }
+  
+  .nav-item:after {
+    content: ''; 
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 4px;
+    bottom: 0; 
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .nav-item:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left; 
+  }

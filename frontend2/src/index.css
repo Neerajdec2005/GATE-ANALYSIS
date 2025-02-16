@@ -1,0 +1,51 @@
+/* Basic styles */
+*{
+  font-family:'Times New Roman', Times, serif;
+}
+.container {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.student-container {
+  margin-bottom: 20px;
+}
+
+.marks-table {
+  margin-bottom: 20px;
+}
+
+.marks-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.marks-table th, .marks-table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chart-item {
+  width: 4500%;
+}

@@ -1,0 +1,135 @@
+/* Main layout */
+.content-layout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Left section: Student Info */
+.left-section {
+  width: 30%;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(61, 145, 61); /* Green color shadow */
+}
+
+/* Right section: Table */
+.right-section {
+  width: 65%;
+  padding: 30px;
+}
+
+/* Scrollable Table */
+.table-container {
+  max-height: 450px; /* Limit table height */
+  padding: 40px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgb(61, 145, 61);
+}
+
+/* Center section: Subject-wise Calculations */
+.subject-calculations {
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+/* Bottom section: Charts */
+.charts-container {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subject-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.bar-chart-container {
+  width: 75%; /* Increase size of bar chart */
+  height: 400px; /* Set height for bar chart */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add background shadow */
+}
+
+.pie-chart-container {
+  width: 20%; /* Adjust size of pie chart */
+  margin-left: 20px; /* Reduce gap between charts */
+  height: 300px; /* Set height for pie chart */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add background shadow */
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+  font-size: 1.1em; /* Make labels a little bigger */
+}
+
+/* Search Bar */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.search-button {
+  background-color: #28a745; /* Green color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+  }
+
+  .table-container {
+    max-height: 200px;
+  }
+
+  .charts-container {
+    align-items: center;
+  }
+
+  .subject-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bar-chart-container, .pie-chart-container {
+    width: 90%;
+    margin-left: 0; /* Remove margin for better centering */
+  }
+}

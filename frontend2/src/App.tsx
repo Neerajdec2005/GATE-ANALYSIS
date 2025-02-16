@@ -35,7 +35,7 @@ const App: React.FC = () => {
   <div className="d-flex gap-3"> <br />
     <a href="#" className="text-dark text-decoration-none">Explore</a>
     <a href="https://gate-analyze.vercel.app/" className="text-dark text-decoration-none">Analysis</a>
-    <a href="#" className="text-dark text-decoration-none">Feedback</a>
+    <a href="https://gate-feedback.vercel.app/" className="text-dark text-decoration-none">Feedback</a>
   </div>
 </nav>
 <br />

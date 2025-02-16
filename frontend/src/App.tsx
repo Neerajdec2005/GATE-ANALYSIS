@@ -129,7 +129,7 @@ function App() {
       <span className="text-xl font-bold">Exam Tracker</span>
       <div className="flex items-center gap-6">
         <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Explore</a>
-        <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Analysis</a>
+        <a href="https://gate-analyze.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Analysis</a>
         <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Feedback</a>
       </div>
     </nav>

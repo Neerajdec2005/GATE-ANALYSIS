@@ -1,0 +1,152 @@
+/* General content layout */
+.content-layout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Left section styles */
+.left-section {
+  width: 30%;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(61, 145, 61);
+}
+
+/* Right section styles */
+.right-section {
+  width: 65%;
+  padding: 30px;
+}
+
+/* Table container styles */
+.table-container {
+  max-height: 450px;
+  padding: 40px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgb(61, 145, 61);
+}
+
+/* Sticky Checkbox container */
+.checkbox-container {
+  position: sticky;
+  top: 20px; /* It remains visible while scrolling */
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 500px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+/* Search bar container styles */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Search input styles */
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Search button styles */
+.search-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #218838;
+}
+
+/* Charts container */
+.charts-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align to the left */
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgb(234, 98, 64);
+}
+
+/* Subject container */
+.subject-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Line chart container */
+.line-chart-container {
+  padding-left: 16%;
+  width: 80%; /* Increased width */
+  height: 600px; /* Increased height */
+  margin-bottom: 30px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Bar chart container */
+.bar-chart-container {
+  width: 65%;
+  height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Pie chart container */
+.pie-chart-container {
+  width: 30%;
+  height: 350px;
+  margin-left: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.feedback-section{
+  width: 100%;
+  /* display: flex; */
+  padding: 30px;
+  margin-top: 10px;
+  background: #fbfafb;
+  box-shadow: 0 4px 8px rgb(46, 217, 123);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .checkbox-container {
+    position: relative;
+    width: 100%;
+    max-height: unset;
+    overflow-y: visible;
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+  }
+
+  .charts-container {
+    align-items: flex-start; /* Keep charts aligned to the left */
+    margin-left: 0;
+  }
+
+  .subject-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

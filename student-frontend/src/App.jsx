@@ -199,22 +199,22 @@ const App = () => {
   }}
 >
   <a
-    href="#"
+    href="https://gate-analysis.vercel.app/"
     style={{ textDecoration: 'none', fontWeight: 'bold', fontSize: '20px', color: 'black' }}
   >
     Exam Tracker
   </a>
   <div style={{ display: 'flex', gap: '16px' }}>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+    <a href="https://department-analysis-fegrvrfgv34325.vercel.app/" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
       Department
     </a>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+    <a href="https://student-analyze-bfdfgr3245.vercel.app/" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
       Student
     </a>
     <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
       Topic-Wise
     </a>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+    <a href="https://gate-analysis-kfcf.vercel.app/" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
       Upload
     </a>
   </div>

@@ -135,8 +135,9 @@ function App() {
         <span className="text-xl font-bold">Exam Tracker</span>
         <div className="flex items-center gap-6">
           <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Department</a>
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Topic-Wise</a>
           <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Student</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Topic-Wise</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Upload</a>
         </div>
       </nav>
       {/* Dashboard Header */}

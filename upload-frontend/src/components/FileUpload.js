@@ -61,6 +61,7 @@ const FileUpload = () => {
 >
   <span style={{ marginRight: '8px', fontSize: '20px' }}>←</span> Exit
 </a>
+  <br/><br/>
 
       <div className="bg-white p-8 rounded-2xl shadow-lg w-96 text-center">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Upload Student Data</h2>

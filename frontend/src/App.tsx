@@ -281,7 +281,7 @@ function App() {
 
       {/* Online References */}
       <div className="bg-white rounded-xl p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Online References</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">Ouestion banks</h2>
         <div className="space-y-4">
           <InsightCard title="" url="https://gateflix.in/gate-free-zone/" img="https://gateflix.in/wp-content/uploads/2020/04/logo-01.png" />
           <InsightCard title="" url="https://www.vidyalankar.org/gate/study-material" img="https://www.vidyalankar.org/assets/img/logo.png" />

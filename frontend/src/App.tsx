@@ -22,27 +22,8 @@ import {
   PieChart,
   Pie,
   Cell,
+  LabelList,
 } from "recharts";
-
-const monthlyData = [
-  { name: "2018", students: 850, avgScore: 680 },
-  { name: "2019", students: 920, avgScore: 695 },
-  { name: "2020", students: 980, avgScore: 705 },
-  { name: "2021", students: 1050, avgScore: 715 },
-  { name: "2022", students: 1150, avgScore: 725 },
-  { name: "2023", students: 1250, avgScore: 685 },
-  { name: "2024", students: 1250, avgScore: 685 },
-];
-
-const subjectData = [
-  { name: "CS", students: 425, progress: 85 },
-  { name: "DA", students: 380, progress: 72 },
-  { name: "EC", students: 310, progress: 65 },
-  { name: "EE", students: 395, progress: 78 },
-  { name: "BM", students: 275, progress: 58 },
-  { name: "CE", students: 275, progress: 58 },
-  { name: "ME", students: 275, progress: 58 },
-];
 
 const COLORS = [
   "#004d9f",
@@ -53,15 +34,33 @@ const COLORS = [
   "#ef4444",
   "#a855f7",
 ];
+const calculateDepartmentAverages = (students) => {
+  const departmentMap = {};
 
+  students.forEach(({ Dept, ["Total Marks Obtained"]: obtained, ["Total Marks"]: total }) => {
+    if (!departmentMap[Dept]) {
+      departmentMap[Dept] = { totalObtained: 0, totalMarks: 0, count: 0 };
+    }
+    departmentMap[Dept].totalObtained += obtained;
+    departmentMap[Dept].totalMarks += total;
+    departmentMap[Dept].count += 1;
+  });
 
-
+  return Object.keys(departmentMap).map((dept) => ({
+    name: dept,
+    progress: departmentMap[dept].totalMarks
+      ? ((departmentMap[dept].totalObtained / departmentMap[dept].totalMarks) * 100).toFixed(2)
+      : "0",
+  }));
+};
 function App() {
   const [totalStudents, setTotalStudents] = useState<number | null>(null);
   const [averageScore, setAverageScore] = useState<string | null>(null);
   const [successRate, setSuccessRate] = useState<string | null>(null);
   const [qualifiedStudents, setQualifiedStudents] = useState<number | null>(null);
-  const [monthlyData, setMonthlyData] = useState([]);
+  const [monthlyData, setMonthlyData] = useState<{ name: string; students: number; avgScore: number }[]>([]);
+  const [departmentCounts, setDepartmentCounts] = useState<{ name: string; students: number }[]>([]);
+  const [departmentPerformance, setDepartmentPerformance] = useState([]);
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
@@ -82,15 +81,22 @@ function App() {
           const average = totalMarks ? ((totalMarksObtained / totalMarks) * 1000).toFixed(2) : "0";
   
           // Compute Qualified Students
-          const qualified = students.filter(student => student["Qualified"] === "YES").length;
-  
+          const qualified = students.filter(student => student["Qualified"] === "YES").length; 
+          const departmentCounts = students.reduce((acc, student) => {
+            const dept = student.Dept;
+            acc[dept] = (acc[dept] || 0) + 1;
+            return acc;
+          }, {});
+          
+          setDepartmentCounts(departmentCounts);
+          setDepartmentPerformance(calculateDepartmentAverages(students));
           // Compute Success Rate
           const successRateValue = ((qualified / students.length) * 100).toFixed(2);
   
           setAverageScore(average);
           setQualifiedStudents(qualified);
           setSuccessRate(successRateValue);
-
+  
           const yearlyData = students.reduce((acc, student) => {
             const year = student.Year;
             if (!acc[year]) {
@@ -101,7 +107,7 @@ function App() {
             acc[year].totalMarks += student["Total Marks"];
             return acc;
           }, {});
-
+  
           // Convert processed data into required format
           const computedMonthlyData = Object.keys(yearlyData).map((year) => ({
             name: year,
@@ -110,7 +116,7 @@ function App() {
               ? (yearlyData[year].totalMarksObtained / yearlyData[year].totalMarks) * 1000
               : 0,
           }));
-
+  
           setMonthlyData(computedMonthlyData);
         }
       } catch (error) {
@@ -124,37 +130,35 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 p-6">
-    {/* Navigation Bar */}
-    <nav className="flex items-center justify-between bg-white shadow-md px-6 py-4 mb-6 rounded-lg">
-      <span className="text-xl font-bold">Exam Tracker</span>
-      <div className="flex items-center gap-6">
-        <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Explore</a>
-        <a href="https://gate-analyze.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Analysis</a>
-        <a href="https://gate-feedback.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Feedback</a>
-      </div>
-    </nav>
-
-    {/* Dashboard Header */}
-    <header className="mb-8">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
-            <Users className="h-8 w-8 text-white" />
+      {/* Navigation Bar */}
+      <nav className="flex items-center justify-between bg-white shadow-md px-6 py-4 mb-6 rounded-lg">
+        <span className="text-xl font-bold">Exam Tracker</span>
+        <div className="flex items-center gap-6">
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Explore</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Analysis</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Feedback</a>
+        </div>
+      </nav>
+      {/* Dashboard Header */}
+      <header className="mb-8">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="h-14 w-14 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center">
+              <Users className="h-8 w-8 text-white" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Gate Analytics Dashboard</h1>
+              <p className="text-gray-600">GATE/GRE Student Performance</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Gate Analytics Dashboard</h1>
-            <p className="text-gray-600">GATE Students Performance</p>
+          <div className="ml-auto">
+            <select className="bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
+              <option>GATE</option>
+              <option>GRE</option>
+            </select>
           </div>
         </div>
-        <div className="ml-auto">
-          <select className="bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
-            <option>GATE</option>
-            <option>GRE</option>
-          </select>
-        </div>
-      </div>
-    </header>
-
+      </header>
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
@@ -164,32 +168,28 @@ function App() {
           trend=""
           trendUp={true}
         />
-      <StatCard
-  icon={<BarChart3 className="h-6 w-6 text-green-600" />}
-  title="Average Score"
-  value={averageScore !== null ? averageScore : "Loading..."}
-  trend=""
-  trendUp={true}
-/>
-
-<StatCard
-  icon={<TrendingUp className="h-6 w-6 text-purple-600" />}
-  title="Success Rate (%)"
-  value={successRate !== null ? successRate + "%" : "Loading..."}
-  trend=""
-  trendUp={true}
-/>
-
-<StatCard
-  icon={<GraduationCap className="h-6 w-6 text-purple-600" />}
-  title="Qualified Students"
-  value={qualifiedStudents !== null ? qualifiedStudents : "Loading..."}
-  trend=""
-  trendUp={true}
-/>
-
+        <StatCard
+          icon={<BarChart3 className="h-6 w-6 text-green-600" />}
+          title="Average Score"
+          value={averageScore !== null ? averageScore : "Loading..."}
+          trend=""
+          trendUp={true}
+        />
+        <StatCard
+          icon={<TrendingUp className="h-6 w-6 text-purple-600" />}
+          title="Success Rate (%)"
+          value={successRate !== null ? successRate + "%" : "Loading..."}
+          trend=""
+          trendUp={true}
+        />
+        <StatCard
+          icon={<GraduationCap className="h-6 w-6 text-purple-600" />}
+          title="Qualified Students"
+          value={qualifiedStudents !== null ? qualifiedStudents : "Loading..."}
+          trend=""
+          trendUp={true}
+        />
       </div>
-
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <ChartCard title="Student Growth & Performance">
@@ -203,47 +203,61 @@ function App() {
             <Area yAxisId="right" dataKey="avgScore" stroke="#22c55e" fillOpacity={0.1} />
           </AreaChart>
         </ChartCard>
-
         <ChartCard title="Department-wise Distribution">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={subjectData}
-              cx="50%"
-              cy="50%"
-              innerRadius={60}
-              outerRadius={100}
-              fill="#8884d8"
-              paddingAngle={5}
-              dataKey="students"
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-            >
-              {subjectData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-          </PieChart>
-        </ResponsiveContainer>
-        </ChartCard>
-      </div>
-      <ChartCard title="Department Performance Analysis">
-      <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={subjectData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="progress" fill="#6366f1" name="Progress">
-                  {subjectData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+  {Object.keys(departmentCounts).length > 0 ? (
+    <ResponsiveContainer width="100%" height="100%">
+      <PieChart>
+        <Pie
+          data={Object.keys(departmentCounts).map(dept => ({
+            name: dept, // department name
+            students: departmentCounts[dept] // student count
+          }))}
+          cx="50%"
+          cy="50%"
+          innerRadius={60}
+          outerRadius={100}
+          fill="#8884d8"
+          paddingAngle={5}
+          dataKey="students"
+          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} // label displaying dept and percent
+        >
+          {Object.keys(departmentCounts).map((dept, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip />
+      </PieChart>
+    </ResponsiveContainer>
+  ) : (
+    <p>No data available</p>
+  )}
 </ChartCard>
 
+
+
+      </div>
+      <ChartCard title="Department Performance Analysis">
+  <ResponsiveContainer width="100%" height={410}> {/* Increased height by 10px */}
+    <BarChart 
+      data={departmentPerformance} 
+      margin={{ top: 40, right: 30, left: 0, bottom: 0 }} // Added 10px at the top
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Bar dataKey="progress" fill="#6366f1" name="Average Score">
+        {departmentPerformance.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+        <LabelList dataKey="progress" position="top" formatter={(value) => `${value}%`} />
+      </Bar>
+    </BarChart>
+  </ResponsiveContainer>
+</ChartCard>
 <br />
+
+
       {/* Online References */}
       <div className="bg-white rounded-xl p-6 shadow-sm">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">Online References</h2>
@@ -263,10 +277,10 @@ function StatCard({ icon, title, value, trend, trendUp }) {
       <div className="flex items-center gap-4 mb-4">{icon}</div>
       <h3 className="font-medium text-gray-600">{title}</h3>
       <div className="flex items-end justify-between">
-  <span className="text-2xl font-bold text-gray-900">{value}</span>
-  <span className={`text-sm ${trendUp ? "text-green-600" : "text-red-600"}`}>{trend}</span>
-</div>
+        <span className="text-2xl font-bold text-gray-900">{value}</span>
+        <span className={`text-sm ${trendUp ? "text-green-600" : "text-red-600"}`}>{trend}</span>
 
+      </div>
     </div>
   );
 }
@@ -290,5 +304,4 @@ function InsightCard({ title, url, img }) {
     </a>
   );
 }
-
 export default App;

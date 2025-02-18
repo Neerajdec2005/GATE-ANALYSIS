@@ -18,7 +18,7 @@ const App: React.FC = () => {
     setError("");
 
     try {
-      const response = await axios.get(`http://localhost:3001/students/${Regno}`);
+      const response = await axios.get(`https://jashwanth-1.onrender.com/students/${Regno}`);
       setStudent(response.data);
     } catch (error) {
       console.error("Error fetching student:", error);

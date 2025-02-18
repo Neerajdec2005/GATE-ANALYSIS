@@ -1,0 +1,266 @@
+/* General Styles */
+.container {
+  max-width: 100%;
+  width: 100vw;  /* Increase width */
+  margin: auto;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  background: #ddeafc;
+  min-height: 100vh;
+  color: black; /* Set all text color in the container to black */
+}
+
+/* Student Ranking Analysis - Top Left Corner */
+.student-ranking {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #4a90e2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 50;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.search-box {
+  display: block;
+  width: 50%; 
+  margin: 20px auto; 
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center; 
+  background : white;
+  color:black;
+}
+
+.search-box input::placeholder {
+  color: #888;
+}
+
+.search-box:focus-within {
+  border-color: #007bff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  color: black; 
+}
+
+
+h2 {
+  margin: 0;
+  color: #4a90e2;
+}
+
+
+.department-buttons {
+  margin-bottom: 25px;
+}
+
+.department-buttons button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 20px;
+  background: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.department-buttons button:hover,
+.department-buttons .active {
+  background: #ffcc33;
+  color: black;
+}
+
+/* Student Table */
+.student-table {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-table th, .student-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  color: black; /* Set table text color to black */
+}
+
+.student-table th {
+  background: #4a90e2;
+  color: white;
+}
+
+.student-table tr:hover {
+  background: #f1f7ff;
+}
+
+/* Actions (Edit Button Only) */
+.student-table button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.student-table button:first-child {
+  background: #4a90e2;
+  color: white;
+}
+
+.student-table button:first-child:hover {
+  background: #357ae8;
+}
+
+/* Edit Student Form (All Elements in One Box) */
+.edit-form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 450px;
+  margin: 20px auto;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: black; /* Set text color for form */
+}
+
+.edit-form-container h3 {
+  margin-bottom: 20px;
+  color: #4a90e2;
+  font-size: 22px;
+  text-align: center;
+}
+
+.edit-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form-container label {
+  font-size: 16px;
+  color: black; /* Set label text color to black */
+  margin-bottom: 8px;
+}
+
+.edit-form-container input,
+.edit-form-container select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  background: #f9f9f9;
+  color: black; /* Set input text color to black */
+}
+
+.edit-form-container input:focus,
+.edit-form-container select:focus {
+  border-color: #4a90e2;
+}
+
+.edit-form-container .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-form-container button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #4a90e2;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-form-container button:hover {
+  background: #357ae8;
+}
+
+.edit-form-container .form-footer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.edit-form-container .cancel-btn {
+  background: #f1f1f1;
+  color: #333;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.edit-form-container .cancel-btn:hover {
+  background: #ddd;
+}
+
+.edit-form-container .form-footer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Success or Error Message */
+.message {
+  padding: 10px;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.success {
+  background: #4CAF50;
+  color: white;
+}
+
+.error {
+  background: #f44336;
+  color: white;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.sort-marks-dropdown{
+  background:white;
+  color:black;
+}
+
+.pagination span {
+  font-size: 1rem;
+  font-weight: bold;
+}

@@ -129,7 +129,7 @@ const App = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:5024/students");
+      const response = await axios.get("https://departmentdatafinal.onrender.com/students");
       const sortedStudents = response.data.sort((a, b) => 
         sortOrder === "desc" ? b["Total Marks Obtained"] - a["Total Marks Obtained"] : a["Total Marks Obtained"] - b["Total Marks Obtained"]
       );
@@ -146,7 +146,7 @@ const App = () => {
 
   const handleSaveStudent = async (student) => {
     try {
-      await axios.put(`http://localhost:5000/students/${student.Regno}`, student);
+      await axios.put(`https://departmentdatafinal.onrender.com/students/${student.Regno}`, student);
       fetchStudents();
       setIsModalOpen(false);
     } catch (error) {
@@ -181,7 +181,47 @@ const App = () => {
   const currentStudents = searchedStudents.slice(indexOfFirstStudent, indexOfLastStudent);
 
   return (
+    
     <div className="container">
+      <nav
+  style={{
+    backgroundColor: 'white',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    padding: '12px 24px',
+    marginBottom: '16px',
+    borderRadius: '8px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    maxWidth: '1250px', // Limits navbar width
+    width: '100%', // Ensures it adapts to smaller screens
+    margin: '0 auto', // Centers the navbar
+  }}
+>
+  <a
+    href="#"
+    style={{ textDecoration: 'none', fontWeight: 'bold', fontSize: '20px', color: 'black' }}
+  >
+    Exam Tracker
+  </a>
+  <div style={{ display: 'flex', gap: '16px' }}>
+    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+      Department
+    </a>
+    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+      Student
+    </a>
+    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+      Topic-Wise
+    </a>
+    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+      Upload
+    </a>
+  </div>
+</nav>
+<br />
+
+
       <h2>Student Ranking Analysis</h2>
       <input type="text" placeholder="Search by Name, Register Number" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="search-box" />
 

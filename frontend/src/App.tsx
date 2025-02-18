@@ -134,9 +134,9 @@ function App() {
       <nav className="flex items-center justify-between bg-white shadow-md px-6 py-4 mb-6 rounded-lg">
         <span className="text-xl font-bold">Exam Tracker</span>
         <div className="flex items-center gap-6">
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Explore</a>
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Analysis</a>
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Feedback</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Department</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Topic-Wise</a>
+          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Student</a>
         </div>
       </nav>
       {/* Dashboard Header */}
@@ -147,15 +147,9 @@ function App() {
               <Users className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Gate Analytics Dashboard</h1>
-              <p className="text-gray-600">GATE/GRE Student Performance</p>
+              <h1 className="text-3xl font-bold text-gray-900">CIT-Gate Analytics Dashboard</h1>
+              <p className="text-gray-600">GATE Student Performance</p>
             </div>
-          </div>
-          <div className="ml-auto">
-            <select className="bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm">
-              <option>GATE</option>
-              <option>GRE</option>
-            </select>
           </div>
         </div>
       </header>
@@ -192,17 +186,35 @@ function App() {
       </div>
       {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <ChartCard title="Student Growth & Performance">
-          <AreaChart data={monthlyData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis yAxisId="left" />
-            <YAxis yAxisId="right" orientation="right" />
-            <Tooltip />
-            <Area yAxisId="left" dataKey="students" stroke="#6366f1" fillOpacity={0.1} />
-            <Area yAxisId="right" dataKey="avgScore" stroke="#22c55e" fillOpacity={0.1} />
-          </AreaChart>
-        </ChartCard>
+      <ChartCard title="Student Growth & Performance">
+  <AreaChart data={monthlyData}>
+    <CartesianGrid strokeDasharray="3 3" />
+    <XAxis dataKey="name" />
+    <YAxis
+      yAxisId="left"
+      label={{
+        value: 'Number of Students',
+        angle: -90,
+        position: 'center',
+        dx: -30,  // Adjust the space here
+      }}
+    />
+    <YAxis
+      yAxisId="right"
+      orientation="right"
+      label={{
+        value: 'Average Score',
+        angle: 90,
+        position: 'center',
+        dx: 30,  // Adjust the space here
+      }}
+    />
+    <Tooltip />
+    <Area yAxisId="left" dataKey="students" stroke="#6366f1" fillOpacity={0.1} />
+    <Area yAxisId="right" dataKey="avgScore" stroke="#22c55e" fillOpacity={0.1} />
+  </AreaChart>
+</ChartCard>
+
         <ChartCard title="Department-wise Distribution">
   {Object.keys(departmentCounts).length > 0 ? (
     <ResponsiveContainer width="100%" height="100%">
@@ -240,11 +252,18 @@ function App() {
   <ResponsiveContainer width="100%" height={410}> {/* Increased height by 10px */}
     <BarChart 
       data={departmentPerformance} 
-      margin={{ top: 40, right: 30, left: 0, bottom: 0 }} // Added 10px at the top
+      margin={{ top: 40, right: 30, left: 20, bottom: 0 }} // Adjusted left margin for better spacing
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
-      <YAxis />
+      <YAxis 
+        label={{ 
+          value: 'Average Score (%)', 
+          angle: -90, 
+          position: 'insideLeft', 
+          style: { textAnchor: 'middle', fontSize: 14 } 
+        }} 
+      />
       <Tooltip />
       <Bar dataKey="progress" fill="#6366f1" name="Average Score">
         {departmentPerformance.map((entry, index) => (
@@ -255,6 +274,7 @@ function App() {
     </BarChart>
   </ResponsiveContainer>
 </ChartCard>
+
 <br />
 
 

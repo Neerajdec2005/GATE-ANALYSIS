@@ -134,10 +134,10 @@ function App() {
       <nav className="flex items-center justify-between bg-white shadow-md px-6 py-4 mb-6 rounded-lg">
         <span className="text-xl font-bold">Exam Tracker</span>
         <div className="flex items-center gap-6">
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Department</a>
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Student</a>
+          <a href="https://department-analysis-fegrvrfgv34325.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Department</a>
+          <a href="https://student-analyze-bfdfgr3245.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Student</a>
           <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Topic-Wise</a>
-          <a href="#" className="text-gray-800 hover:text-indigo-600 no-underline">Upload</a>
+          <a href="https://gate-analysis-kfcf.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Upload</a>
         </div>
       </nav>
       {/* Dashboard Header */}

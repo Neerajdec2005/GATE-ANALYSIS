@@ -41,42 +41,27 @@ const FileUpload = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-6">
-    <nav
+    <a 
+  href="your-target-url-here" 
   style={{
-    backgroundColor: 'white',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-    padding: '12px 24px',
-    marginBottom: '16px',
-    borderRadius: '8px',
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    maxWidth: '1250px', // Limits navbar width
-    width: '100%', // Ensures it adapts to smaller screens
-    margin: '0 auto', // Centers the navbar
+    textDecoration: 'none',
+    color: 'black',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    padding: '10px 16px',
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    backgroundColor: '#f8f9fa',
+    transition: 'background 0.2s ease-in-out',
   }}
+  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#e2e6ea')}
+  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#f8f9fa')}
 >
-  <a
-    href="#"
-    style={{ textDecoration: 'none', fontWeight: 'bold', fontSize: '20px', color: 'black' }}
-  >
-    Exam Tracker
-  </a>
-  <div style={{ display: 'flex', gap: '16px' }}>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
-      Department
-    </a>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
-      Student
-    </a>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
-      Topic-Wise
-    </a>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
-      Upload
-    </a>
-  </div>
-</nav>
+  <span style={{ marginRight: '8px', fontSize: '20px' }}>←</span> Exit
+</a>
+
       <div className="bg-white p-8 rounded-2xl shadow-lg w-96 text-center">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">Upload Student Data</h2>
         

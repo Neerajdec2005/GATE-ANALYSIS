@@ -7,7 +7,7 @@ const PORT = 5079;
 
 // Enable CORS
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://subject-wise-analysis-fdsgern.vercel.app/",
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));

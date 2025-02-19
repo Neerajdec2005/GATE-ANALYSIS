@@ -34,7 +34,7 @@ function LeaderboardPage() {
       setLoading(true);
       setError(null);
       const mappedDiscipline = mapDisciplineToShortForm(selectedDiscipline);
-      fetch(`http://localhost:5001/api/subjects/${mappedDiscipline}`)
+      fetch(`https://subjectwisedvnerfnvojfdgj.onrender.com/api/subjects/${mappedDiscipline}`)
         .then((res) => {
           if (!res.ok) throw new Error('Failed to fetch subjects');
           return res.json();
@@ -56,7 +56,7 @@ function LeaderboardPage() {
       setLoading(true);
       setError(null);
       const mappedDiscipline = mapDisciplineToShortForm(selectedDiscipline);
-      fetch(`http://localhost:5001/api/leaderboard/${mappedDiscipline}/${selectedSubject}`)
+      fetch(`https://subjectwisedvnerfnvojfdgj.onrender.com/api/leaderboard/${mappedDiscipline}/${selectedSubject}`)
         .then((res) => {
           if (!res.ok) throw new Error('Failed to fetch leaderboard');
           return res.json();

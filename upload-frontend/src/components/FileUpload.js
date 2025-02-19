@@ -42,7 +42,7 @@ const FileUpload = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-6">
     <a 
-  href="https://gate-analysis.vercel.app/" 
+  href="https://gate-dashboard-fdf.vercel.app/" 
   style={{
     display: 'flex',
     alignItems: 'center',

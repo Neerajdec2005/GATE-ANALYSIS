@@ -211,7 +211,7 @@ const App = () => {
     <a href="https://student-analyze-bfdfgr3245.vercel.app/" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
       Student
     </a>
-    <a href="#" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
+    <a href="https://subject-wise-analysis-fdsgern.vercel.app/" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>
       Topic-Wise
     </a>
     <a href="https://gate-analysis-kfcf.vercel.app/" style={{ color: 'black', textDecoration: 'none', fontSize: '16px' }}>

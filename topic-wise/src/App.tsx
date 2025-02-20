@@ -15,7 +15,7 @@ const mapDisciplineToShortForm = (discipline: string): string => {
     "BIO MEDICAL": "BME",
     "CIVIL": "CE",
     "ELECTRICAL AND ELECTRONICS": "EEE",
-    "MECHANICAL": "ME",
+    "MECHANICAL": "MECH",
   };
 
   return disciplineMap[discipline] || discipline;

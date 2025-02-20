@@ -21,7 +21,7 @@ const App: React.FC = () => {
       setTimeout(() => setError(""), 3000);
       setStudent(null);
     }
-  };
+  }; 
 
   return (
     <div className="container">

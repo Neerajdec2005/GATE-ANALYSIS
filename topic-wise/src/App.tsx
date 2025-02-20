@@ -79,6 +79,15 @@ function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 p-6">
+      <nav className="flex items-center justify-between bg-white shadow-md px-6 py-4 mb-6 rounded-lg">
+        <a href="https://gate-dashboard-fdf.vercel.app/"><span className="text-xl font-bold">Exam Tracker</span></a>
+        <div className="flex items-center gap-6">
+          <a href="https://gate-department-bfdbbrgbrg.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Department</a>
+          <a href="https://gate-gamma.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Student</a>
+          <a href="https://subject-wise-analysis-fdsgern.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Topic-Wise</a>
+          <a href="https://student-upload.vercel.app/" className="text-gray-800 hover:text-indigo-600 no-underline">Upload</a>
+        </div>
+      </nav>
       <div className="max-w-6xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header */}
